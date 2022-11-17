@@ -22,13 +22,31 @@ function createCweDictionary({ cweArchive }) {
         membershipMap.set(memberId, current)
       })
     })
-  const cweDictionary = {}
+  const cweDictionary = []
   const cweHierarchy = []
   const cweMemberships = []
 
   allWeaknesses.forEach(function(weakness) {
-    const weaknessId = weakness['attr']['@_ID']
-    cweDictionary[weaknessId] = weakness
+    // rename these so that we can generate the types for them
+    const attr = weakness['attr']
+    attr['ID'] = attr['@_ID']
+    attr['Name'] = attr['@_Name']
+    attr['CWE_ID'] = attr['@_CWE_ID']
+    attr['Nature'] = attr['@_Nature']
+
+    delete attr['@_ID']
+    delete attr['@_Name']
+    delete attr['@_CWE_ID']
+    delete attr['@_Nature']
+
+    weakness['attr'] = attr
+
+    const weaknessId = weakness['attr']['ID']
+    if (!weaknessId) {
+      return
+    }
+
+    cweDictionary.push(weakness)
 
     if (weakness['Related_Weaknesses'] && weakness['Related_Weaknesses']['Related_Weakness']) {
       const relatedWeaknesses = weakness['Related_Weaknesses']['Related_Weakness']

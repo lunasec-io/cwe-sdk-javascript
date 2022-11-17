@@ -42,17 +42,17 @@ updateArchive()
     })
 
     writeJsonToFile({
-      jsonFilepath: path.join(__dirname, '..', 'raw', OUTPUT_JSON_DICT_FILENAME),
+      jsonFilepath: path.join(__dirname, '..', 'src/cwe-data', OUTPUT_JSON_DICT_FILENAME),
       jsonData: cweDictionary
     })
 
     writeJsonToFile({
-      jsonFilepath: path.join(__dirname, '..', 'raw', OUTPUT_JSON_HIERARCHY_FILENAME),
+      jsonFilepath: path.join(__dirname, '..', 'src/cwe-data', OUTPUT_JSON_HIERARCHY_FILENAME),
       jsonData: cweHierarchy
     })
 
     writeJsonToFile({
-      jsonFilepath: path.join(__dirname, '..', 'raw', OUTPUT_JSON_MEMBERSHIPS_FILENAME),
+      jsonFilepath: path.join(__dirname, '..', 'src/cwe-data', OUTPUT_JSON_MEMBERSHIPS_FILENAME),
       jsonData: cweMemberships
     })
 
