@@ -200,7 +200,6 @@
     "@semantic-release/github"
   ],
   "files": [
-    "raw",
-    "src"
+    "dist"
   ]
 }
