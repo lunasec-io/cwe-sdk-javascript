@@ -8,7 +8,7 @@
   },
   "module": "true",
   "scripts": {
-    "build": "DEBUG=cwe* node ./build/build.js",
+    "build": "tsc",
     "lint": "eslint . && yarn run lint:lockfile",
     "lint:fix": "eslint . --fix",
     "test": "jest",
