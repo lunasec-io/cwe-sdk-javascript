@@ -1,0 +1,1 @@
+{"version":3,"file":"CweHierarchy.d.ts","sourceRoot":"","sources":["../../src/CweHierarchy.ts"],"names":[],"mappings":"AAWA,qBAAa,OAAO;WACF,cAAc,CAAC,IAAI,EAAE,MAAM,GAAG;QAAE,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM,EAAE,CAAA;KAAE;WAIzD,kBAAkB,CAAC,KAAK,EAAE;QAAE,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM,EAAE,CAAA;KAAE,GAAG,MAAM;CAG/E"}
