@@ -9,6 +9,10 @@
   "module": "true",
   "scripts": {
     "build": "tsc",
+    "generate": "node build/build.js && yarn generate:dictionary-types && yarn generate:hierarchy-types && yarn generate:membership-types",
+    "generate:membership-types": "cat src/cwe-data/cwe-memberships.json | yarn quicktype -l typescript --out src/CweMemberships.ts",
+    "generate:hierarchy-types": "cat src/cwe-data/cwe-hierarchy.json | yarn quicktype -l typescript --out src/CweHierarchy.ts",
+    "generate:dictionary-types": "cat src/cwe-data/cwe-dictionary.json | yarn quicktype -l typescript --out src/CweDictionary.ts",
     "lint": "eslint . && yarn run lint:lockfile",
     "lint:fix": "eslint . --fix",
     "test": "jest",

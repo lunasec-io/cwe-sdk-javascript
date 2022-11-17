@@ -10,25 +10,25 @@
 export interface CweDictionary {
     attr:                     CweDictionaryAttr;
     Description:              string;
-    Extended_Description?:    ExtendedDescriptionClass | string;
     Related_Weaknesses?:      RelatedWeaknesses;
     Applicable_Platforms?:    ApplicablePlatforms;
-    Background_Details?:      BackgroundDetails;
     Modes_Of_Introduction?:   ModesOfIntroduction;
-    Likelihood_Of_Exploit?:   Likelihood;
     Common_Consequences?:     CommonConsequences;
     Potential_Mitigations?:   PotentialMitigations;
-    Demonstrative_Examples?:  DemonstrativeExamples;
-    Observed_Examples?:       ObservedExamples;
+    Taxonomy_Mappings?:       TaxonomyMappings;
     References?:              CweDictionaryReferences;
+    Notes?:                   Notes;
     Content_History:          ContentHistory;
+    Extended_Description?:    ExtendedDescriptionClass | string;
+    Background_Details?:      BackgroundDetails;
+    Demonstrative_Examples?:  DemonstrativeExamples;
+    Related_Attack_Patterns?: RelatedAttackPatterns;
+    Detection_Methods?:       DetectionMethods;
+    Affected_Resources?:      AffectedResources;
+    Likelihood_Of_Exploit?:   Likelihood;
+    Observed_Examples?:       ObservedExamples;
     Weakness_Ordinalities?:   WeaknessOrdinalities;
     Alternate_Terms?:         AlternateTerms;
-    Detection_Methods?:       DetectionMethods;
-    Taxonomy_Mappings?:       TaxonomyMappings;
-    Related_Attack_Patterns?: RelatedAttackPatterns;
-    Notes?:                   Notes;
-    Affected_Resources?:      AffectedResources;
     Functional_Areas?:        FunctionalAreas;
 }
 
@@ -126,9 +126,9 @@ export interface BackgroundDetails {
 
 export interface BackgroundDetail {
     "xhtml:p"?:   string[] | string;
-    "#text"?:     string;
-    "xhtml:ul"?:  XHTMLOlElement;
     "xhtml:div"?: BackgroundDetailXHTMLDiv;
+    "xhtml:ul"?:  XHTMLOlElement;
+    "#text"?:     string;
     "xhtml:img"?: XHTMLImg;
     "xhtml:ol"?:  XHTMLOlElement;
     attr?:        BackgroundDetailAttr;
@@ -153,10 +153,10 @@ export enum Type {
 }
 
 export interface BackgroundDetailXHTMLDiv {
-    "#text"?:     string;
     attr:         XHTMLDivAttr;
-    "xhtml:br"?:  string;
     "xhtml:div"?: string[];
+    "#text"?:     string;
+    "xhtml:br"?:  string;
 }
 
 export interface XHTMLDivAttr {
@@ -295,9 +295,9 @@ export interface PreviousEntryNameAttr {
 
 export interface Submission {
     Submission_Name?:         string;
-    Submission_Organization?: SubmissionOrganization;
     Submission_Date:          string;
     Submission_Comment?:      string;
+    Submission_Organization?: SubmissionOrganization;
 }
 
 export enum SubmissionOrganization {
@@ -335,11 +335,11 @@ export interface DemonstrativeExampleElement {
 
 export interface PurpleBodyText {
     "xhtml:ul"?:  PurpleXHTML;
+    "xhtml:ol"?:  PurpleXHTML;
     "xhtml:p"?:   string[] | string;
+    "xhtml:div"?: PurpleXHTMLDiv;
     "#text"?:     string;
     "xhtml:br"?:  string;
-    "xhtml:ol"?:  PurpleXHTML;
-    "xhtml:div"?: PurpleXHTMLDiv;
 }
 
 export interface PurpleXHTMLDiv {
@@ -357,12 +357,12 @@ export interface XHTMLOlXHTMLLi {
 export interface PurpleExampleCode {
     attr:           ExampleCodeAttr;
     "xhtml:div"?:   FluffyXHTMLDiv[] | XHTMLDiv11 | string;
-    "xhtml:table"?: XHTMLTableXHTMLTable;
     "#text"?:       string;
     "xhtml:br"?:    string[] | string;
     "xhtml:p"?:     string;
     "xhtml:ul"?:    XHTMLOlElement;
     "xhtml:i"?:     string;
+    "xhtml:table"?: XHTMLTableXHTMLTable;
 }
 
 export interface ExampleCodeAttr {
@@ -477,10 +477,10 @@ export interface AmbitiousXHTMLDiv {
 }
 
 export interface IndecentXHTMLDiv {
-    "#text"?:     string;
     attr?:        XHTMLDivAttr;
-    "xhtml:br"?:  string;
     "xhtml:div"?: Array<HilariousXHTMLDiv | string> | AmbitiousXHTMLDiv;
+    "#text"?:     string;
+    "xhtml:br"?:  string;
 }
 
 export interface CunningXHTMLDiv {
@@ -564,24 +564,24 @@ export interface XHTMLDiv10 {
 
 export interface XHTMLDiv11 {
     "#text":      string;
-    "xhtml:i"?:   string[] | string;
     "xhtml:br"?:  string[] | string;
     "xhtml:div"?: XHTMLDiv12[] | XHTMLDiv18;
+    "xhtml:i"?:   string[] | string;
     attr?:        XHTMLDivAttr;
 }
 
 export interface XHTMLDiv12 {
     "#text"?:     string;
-    attr?:        XHTMLDivAttr;
-    "xhtml:div"?: XHTMLDiv13[] | XHTMLDiv17;
     "xhtml:br"?:  string[] | string;
+    "xhtml:div"?: XHTMLDiv13[] | XHTMLDiv17;
     "xhtml:i"?:   string;
+    attr?:        XHTMLDivAttr;
 }
 
 export interface XHTMLDiv13 {
     "#text"?:     string;
-    attr?:        XHTMLDivAttr;
     "xhtml:br"?:  string;
+    attr?:        XHTMLDivAttr;
     "xhtml:div"?: XHTMLDiv14;
 }
 
@@ -609,17 +609,17 @@ export interface XHTMLDiv16 {
 export interface XHTMLDiv17 {
     "#text"?:     string;
     "xhtml:br"?:  string[] | string;
-    "xhtml:div"?: FluffyXHTMLDiv[] | StickyXHTMLDiv;
     attr?:        XHTMLDivAttr;
     "xhtml:i"?:   string[] | string;
+    "xhtml:div"?: FluffyXHTMLDiv[] | StickyXHTMLDiv;
 }
 
 export interface XHTMLDiv18 {
     "#text"?:     string;
     attr:         XHTMLDivAttr;
     "xhtml:br"?:  string[] | string;
-    "xhtml:i"?:   string[] | string;
     "xhtml:div"?: XHTMLDiv19[] | XHTMLDiv20;
+    "xhtml:i"?:   string[] | string;
     "xhtml:b"?:   string;
 }
 
@@ -634,9 +634,9 @@ export interface XHTMLDiv19 {
 export interface XHTMLDiv20 {
     "#text"?:     string;
     "xhtml:br"?:  string[] | string;
-    "xhtml:i"?:   string[] | string;
     "xhtml:div"?: XHTMLDiv21[] | FluffyXHTMLDiv;
     attr?:        XHTMLDivAttr;
+    "xhtml:i"?:   string[] | string;
 }
 
 export interface XHTMLDiv21 {
@@ -649,9 +649,9 @@ export interface XHTMLDiv21 {
 
 export interface XHTMLDiv22 {
     "#text":      string;
-    "xhtml:i"?:   string[] | string;
     "xhtml:br"?:  string[] | string;
     "xhtml:div"?: IndecentXHTMLDiv[] | FluffyXHTMLDiv;
+    "xhtml:i"?:   string[] | string;
     attr?:        XHTMLDivAttr;
 }
 
@@ -680,8 +680,8 @@ export interface FluffyExampleCode {
 export interface XHTMLDiv23 {
     "#text":      string;
     "xhtml:br"?:  string[] | string;
-    "xhtml:div"?: XHTMLDiv24[] | XHTMLDiv27;
     "xhtml:i"?:   string[] | string;
+    "xhtml:div"?: XHTMLDiv24[] | XHTMLDiv27;
 }
 
 export interface XHTMLDiv24 {
@@ -696,22 +696,22 @@ export interface XHTMLDiv25 {
     "#text":      string;
     attr:         XHTMLDivAttr;
     "xhtml:br"?:  string[] | string;
-    "xhtml:div"?: FluffyXHTMLDiv[];
     "xhtml:i"?:   string[];
+    "xhtml:div"?: FluffyXHTMLDiv[];
 }
 
 export interface XHTMLDiv26 {
     "#text"?:     string;
-    attr?:        XHTMLDivAttr;
     "xhtml:br"?:  string[] | string;
     "xhtml:div"?: IndecentXHTMLDiv[] | IndecentXHTMLDiv;
     "xhtml:i"?:   string[] | string;
+    attr?:        XHTMLDivAttr;
 }
 
 export interface XHTMLDiv27 {
+    "#text"?:     string;
     attr:         XHTMLDivAttr;
     "xhtml:div"?: XHTMLDiv28[] | XHTMLDiv29;
-    "#text"?:     string;
     "xhtml:br"?:  string[] | string;
     "xhtml:i"?:   string;
 }
@@ -720,16 +720,16 @@ export interface XHTMLDiv28 {
     "#text":      string;
     attr:         XHTMLDivAttr;
     "xhtml:br"?:  string[] | string;
-    "xhtml:div"?: FluffyXHTMLDiv[];
     "xhtml:i"?:   string;
+    "xhtml:div"?: FluffyXHTMLDiv[];
 }
 
 export interface XHTMLDiv29 {
     "#text"?:     string;
+    attr?:        XHTMLDivAttr;
     "xhtml:br"?:  string[] | string;
     "xhtml:div"?: FluffyXHTMLDiv[] | XHTMLDiv30;
     "xhtml:i"?:   string[] | string;
-    attr?:        XHTMLDivAttr;
 }
 
 export interface XHTMLDiv30 {
@@ -742,8 +742,8 @@ export interface XHTMLDiv30 {
 
 export interface XHTMLDiv31 {
     "#text"?:     string;
-    "xhtml:br"?:  string[];
     "xhtml:div"?: XHTMLDiv32[] | IndecentXHTMLDiv;
+    "xhtml:br"?:  string[];
     "xhtml:i"?:   string[] | string;
     attr?:        XHTMLDivAttr;
 }
@@ -782,19 +782,19 @@ export interface DemonstrativeExampleAttr {
 }
 
 export interface PurpleDemonstrativeExample {
-    Intro_Text:    FluffyIntroText | string;
-    Body_Text?:    Array<FluffyBodyText | string> | BackgroundDetail | string;
-    Example_Code?: TentacledExampleCode[] | StickyExampleCode;
     attr?:         DemonstrativeExampleAttr;
+    Intro_Text:    FluffyIntroText | string;
+    Example_Code?: TentacledExampleCode[] | StickyExampleCode;
+    Body_Text?:    Array<FluffyBodyText | string> | BackgroundDetail | string;
     References?:   DemonstrativeExampleReferences;
 }
 
 export interface FluffyBodyText {
     "xhtml:ul"?:    BodyTextXHTMLUL;
+    "xhtml:div"?:   XHTMLDiv34;
     "#text"?:       string;
     "xhtml:table"?: BodyTextXHTMLTable;
     "xhtml:p"?:     string[] | string;
-    "xhtml:div"?:   XHTMLDiv34;
 }
 
 export interface XHTMLDiv34 {
@@ -832,8 +832,8 @@ export interface XHTMLDiv35 {
     "#text":      string;
     "xhtml:br"?:  string[] | string;
     "xhtml:div"?: XHTMLDiv36[] | XHTMLDiv48;
-    attr?:        XHTMLDivAttr;
     "xhtml:i"?:   string[] | string;
+    attr?:        XHTMLDivAttr;
 }
 
 export interface XHTMLDiv36 {
@@ -854,8 +854,8 @@ export interface XHTMLDiv38 {
     "#text"?:     string;
     attr?:        XHTMLDivAttr;
     "xhtml:br"?:  string[] | string;
-    "xhtml:div"?: XHTMLDiv39[] | XHTMLDiv44;
     "xhtml:i"?:   string[] | string;
+    "xhtml:div"?: XHTMLDiv39[] | XHTMLDiv44;
 }
 
 export interface XHTMLDiv39 {
@@ -920,9 +920,9 @@ export interface XHTMLDiv47 {
 }
 
 export interface XHTMLDiv48 {
-    "#text"?:     string;
     attr:         XHTMLDivAttr;
     "xhtml:div"?: XHTMLDiv36[] | XHTMLDiv49;
+    "#text"?:     string;
     "xhtml:br"?:  string[] | string;
     "xhtml:i"?:   string[] | string;
     "xhtml:b"?:   string;
@@ -981,19 +981,19 @@ export interface XHTMLDiv50 {
 }
 
 export interface XHTMLDiv51 {
-    "#text"?:     string;
     attr:         XHTMLDivAttr;
     "xhtml:div"?: XHTMLDiv12[] | XHTMLDiv52;
+    "#text"?:     string;
     "xhtml:br"?:  string[] | string;
     "xhtml:i"?:   string[] | string;
 }
 
 export interface XHTMLDiv52 {
     "#text"?:     string;
-    attr?:        XHTMLDivAttr;
     "xhtml:br"?:  string[] | string;
-    "xhtml:i"?:   string[] | string;
     "xhtml:div"?: IndecentXHTMLDiv[] | StickyXHTMLDiv;
+    attr?:        XHTMLDivAttr;
+    "xhtml:i"?:   string[] | string;
 }
 
 export interface FluffyXHTMLTable {
@@ -1026,8 +1026,8 @@ export interface DetectionMethods {
 export interface DetectionMethodElement {
     Method:               Method;
     Description:          PurpleDescription | string;
-    Effectiveness?:       DetectionMethodEffectiveness;
     attr?:                DetectionMethodAttr;
+    Effectiveness?:       DetectionMethodEffectiveness;
     Effectiveness_Notes?: string;
 }
 
@@ -1090,8 +1090,8 @@ export interface PurpleDetectionMethod {
     Method:               Method;
     Description:          FluffyDescription | string;
     Effectiveness?:       DetectionMethodEffectiveness;
-    Effectiveness_Notes?: string;
     attr?:                DetectionMethodAttr;
+    Effectiveness_Notes?: string;
 }
 
 export interface FluffyDescription {
@@ -1113,10 +1113,10 @@ export interface XHTMLDivXHTMLULClass {
 export interface ExtendedDescriptionClass {
     "xhtml:p":    string[] | string;
     "xhtml:ul"?:  FluffyXHTMLUL[] | TentacledXHTMLUL;
+    "xhtml:div"?: ExtendedDescriptionXHTMLDiv;
     "xhtml:ol"?:  XHTMLOlElement;
     "#text"?:     string;
     "xhtml:br"?:  string[];
-    "xhtml:div"?: ExtendedDescriptionXHTMLDiv;
 }
 
 export interface ExtendedDescriptionXHTMLDiv {
@@ -1138,9 +1138,9 @@ export interface TentacledXHTMLUL {
 }
 
 export interface PurpleXHTMLLi {
-    "xhtml:div"?: XHTMLLiClass;
     "#text"?:     string;
     "xhtml:b"?:   string;
+    "xhtml:div"?: XHTMLLiClass;
 }
 
 export interface FunctionalAreas {
@@ -1205,10 +1205,10 @@ export interface PotentialMitigations {
 export interface MitigationElement {
     Phase?:               PhaseElement[] | PhaseElement;
     Description:          TentacledDescription | string;
-    Strategy?:            Strategy;
     attr?:                MitigationAttr;
-    Effectiveness_Notes?: string;
+    Strategy?:            Strategy;
     Effectiveness?:       PurpleEffectiveness;
+    Effectiveness_Notes?: string;
 }
 
 export interface TentacledDescription {
@@ -1259,10 +1259,10 @@ export interface MitigationAttr {
 export interface PurpleMitigation {
     Phase?:               PhaseElement[] | PhaseElement;
     Description:          BackgroundDetail | string;
+    attr?:                MitigationAttr;
+    Strategy?:            Strategy;
     Effectiveness?:       DetectionMethodEffectiveness;
     Effectiveness_Notes?: string;
-    Strategy?:            Strategy;
-    attr?:                MitigationAttr;
 }
 
 export interface CweDictionaryReferences {
@@ -1403,12 +1403,12 @@ export enum Structure {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toCweDictionary(json: string): CweDictionary[] {
-        return cast(JSON.parse(json), a(r("CweDictionary")));
+    public static toCweDictionary(json: string): { [key: string]: CweDictionary } {
+        return cast(JSON.parse(json), m(r("CweDictionary")));
     }
 
-    public static cweDictionaryToJson(value: CweDictionary[]): string {
-        return JSON.stringify(uncast(value, a(r("CweDictionary"))), null, 2);
+    public static cweDictionaryToJson(value: { [key: string]: CweDictionary }): string {
+        return JSON.stringify(uncast(value, m(r("CweDictionary"))), null, 2);
     }
 }
 
@@ -1548,25 +1548,25 @@ const typeMap: any = {
     "CweDictionary": o([
         { json: "attr", js: "attr", typ: r("CweDictionaryAttr") },
         { json: "Description", js: "Description", typ: "" },
-        { json: "Extended_Description", js: "Extended_Description", typ: u(undefined, u(r("ExtendedDescriptionClass"), "")) },
         { json: "Related_Weaknesses", js: "Related_Weaknesses", typ: u(undefined, r("RelatedWeaknesses")) },
         { json: "Applicable_Platforms", js: "Applicable_Platforms", typ: u(undefined, r("ApplicablePlatforms")) },
-        { json: "Background_Details", js: "Background_Details", typ: u(undefined, r("BackgroundDetails")) },
         { json: "Modes_Of_Introduction", js: "Modes_Of_Introduction", typ: u(undefined, r("ModesOfIntroduction")) },
-        { json: "Likelihood_Of_Exploit", js: "Likelihood_Of_Exploit", typ: u(undefined, r("Likelihood")) },
         { json: "Common_Consequences", js: "Common_Consequences", typ: u(undefined, r("CommonConsequences")) },
         { json: "Potential_Mitigations", js: "Potential_Mitigations", typ: u(undefined, r("PotentialMitigations")) },
-        { json: "Demonstrative_Examples", js: "Demonstrative_Examples", typ: u(undefined, r("DemonstrativeExamples")) },
-        { json: "Observed_Examples", js: "Observed_Examples", typ: u(undefined, r("ObservedExamples")) },
+        { json: "Taxonomy_Mappings", js: "Taxonomy_Mappings", typ: u(undefined, r("TaxonomyMappings")) },
         { json: "References", js: "References", typ: u(undefined, r("CweDictionaryReferences")) },
+        { json: "Notes", js: "Notes", typ: u(undefined, r("Notes")) },
         { json: "Content_History", js: "Content_History", typ: r("ContentHistory") },
+        { json: "Extended_Description", js: "Extended_Description", typ: u(undefined, u(r("ExtendedDescriptionClass"), "")) },
+        { json: "Background_Details", js: "Background_Details", typ: u(undefined, r("BackgroundDetails")) },
+        { json: "Demonstrative_Examples", js: "Demonstrative_Examples", typ: u(undefined, r("DemonstrativeExamples")) },
+        { json: "Related_Attack_Patterns", js: "Related_Attack_Patterns", typ: u(undefined, r("RelatedAttackPatterns")) },
+        { json: "Detection_Methods", js: "Detection_Methods", typ: u(undefined, r("DetectionMethods")) },
+        { json: "Affected_Resources", js: "Affected_Resources", typ: u(undefined, r("AffectedResources")) },
+        { json: "Likelihood_Of_Exploit", js: "Likelihood_Of_Exploit", typ: u(undefined, r("Likelihood")) },
+        { json: "Observed_Examples", js: "Observed_Examples", typ: u(undefined, r("ObservedExamples")) },
         { json: "Weakness_Ordinalities", js: "Weakness_Ordinalities", typ: u(undefined, r("WeaknessOrdinalities")) },
         { json: "Alternate_Terms", js: "Alternate_Terms", typ: u(undefined, r("AlternateTerms")) },
-        { json: "Detection_Methods", js: "Detection_Methods", typ: u(undefined, r("DetectionMethods")) },
-        { json: "Taxonomy_Mappings", js: "Taxonomy_Mappings", typ: u(undefined, r("TaxonomyMappings")) },
-        { json: "Related_Attack_Patterns", js: "Related_Attack_Patterns", typ: u(undefined, r("RelatedAttackPatterns")) },
-        { json: "Notes", js: "Notes", typ: u(undefined, r("Notes")) },
-        { json: "Affected_Resources", js: "Affected_Resources", typ: u(undefined, r("AffectedResources")) },
         { json: "Functional_Areas", js: "Functional_Areas", typ: u(undefined, r("FunctionalAreas")) },
     ], false),
     "AffectedResources": o([
@@ -1612,9 +1612,9 @@ const typeMap: any = {
     ], false),
     "BackgroundDetail": o([
         { json: "xhtml:p", js: "xhtml:p", typ: u(undefined, u(a(""), "")) },
-        { json: "#text", js: "#text", typ: u(undefined, "") },
-        { json: "xhtml:ul", js: "xhtml:ul", typ: u(undefined, r("XHTMLOlElement")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("BackgroundDetailXHTMLDiv")) },
+        { json: "xhtml:ul", js: "xhtml:ul", typ: u(undefined, r("XHTMLOlElement")) },
+        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:img", js: "xhtml:img", typ: u(undefined, r("XHTMLImg")) },
         { json: "xhtml:ol", js: "xhtml:ol", typ: u(undefined, r("XHTMLOlElement")) },
         { json: "attr", js: "attr", typ: u(undefined, r("BackgroundDetailAttr")) },
@@ -1624,10 +1624,10 @@ const typeMap: any = {
         { json: "@_Type", js: "@_Type", typ: r("Type") },
     ], false),
     "BackgroundDetailXHTMLDiv": o([
-        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
-        { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, "") },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, a("")) },
+        { json: "#text", js: "#text", typ: u(undefined, "") },
+        { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, "") },
     ], false),
     "XHTMLDivAttr": o([
         { json: "@_style", js: "@_style", typ: r("Style") },
@@ -1660,14 +1660,14 @@ const typeMap: any = {
     "ContributionElement": o([
         { json: "attr", js: "attr", typ: r("BackgroundDetailAttr") },
         { json: "Contribution_Organization", js: "Contribution_Organization", typ: u(undefined, "") },
-        { json: "Contribution_Date", js: "Contribution_Date", typ: u(undefined, "") },
+        { json: "Contribution_Date", js: "Contribution_Date", typ: Date },
         { json: "Contribution_Comment", js: "Contribution_Comment", typ: "" },
         { json: "Contribution_Name", js: "Contribution_Name", typ: u(undefined, "") },
     ], false),
     "ModificationElement": o([
         { json: "Modification_Name", js: "Modification_Name", typ: u(undefined, r("ModificationName")) },
         { json: "Modification_Organization", js: "Modification_Organization", typ: u(undefined, r("ModificationOrganization")) },
-        { json: "Modification_Date", js: "Modification_Date", typ: u(undefined, "") },
+        { json: "Modification_Date", js: "Modification_Date", typ: Date },
         { json: "Modification_Comment", js: "Modification_Comment", typ: u(undefined, "") },
         { json: "Modification_Importance", js: "Modification_Importance", typ: u(undefined, r("ModificationImportance")) },
     ], false),
@@ -1676,13 +1676,13 @@ const typeMap: any = {
         { json: "attr", js: "attr", typ: r("PreviousEntryNameAttr") },
     ], false),
     "PreviousEntryNameAttr": o([
-        { json: "@_Date", js: "@_Date", typ: u(undefined, "") },
+        { json: "@_Date", js: "@_Date", typ: Date },
     ], false),
     "Submission": o([
         { json: "Submission_Name", js: "Submission_Name", typ: u(undefined, "") },
-        { json: "Submission_Organization", js: "Submission_Organization", typ: u(undefined, r("SubmissionOrganization")) },
-        { json: "Submission_Date", js: "Submission_Date", typ: u(undefined, "") },
+        { json: "Submission_Date", js: "Submission_Date", typ: Date },
         { json: "Submission_Comment", js: "Submission_Comment", typ: u(undefined, "") },
+        { json: "Submission_Organization", js: "Submission_Organization", typ: u(undefined, r("SubmissionOrganization")) },
     ], false),
     "DemonstrativeExamples": o([
         { json: "Demonstrative_Example", js: "Demonstrative_Example", typ: u(a(r("DemonstrativeExampleElement")), r("PurpleDemonstrativeExample")) },
@@ -1696,11 +1696,11 @@ const typeMap: any = {
     ], false),
     "PurpleBodyText": o([
         { json: "xhtml:ul", js: "xhtml:ul", typ: u(undefined, r("PurpleXHTML")) },
+        { json: "xhtml:ol", js: "xhtml:ol", typ: u(undefined, r("PurpleXHTML")) },
         { json: "xhtml:p", js: "xhtml:p", typ: u(undefined, u(a(""), "")) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("PurpleXHTMLDiv")) },
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, "") },
-        { json: "xhtml:ol", js: "xhtml:ol", typ: u(undefined, r("PurpleXHTML")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("PurpleXHTMLDiv")) },
     ], false),
     "PurpleXHTMLDiv": o([
         { json: "xhtml:div", js: "xhtml:div", typ: u(a(""), 0, "") },
@@ -1714,12 +1714,12 @@ const typeMap: any = {
     "PurpleExampleCode": o([
         { json: "attr", js: "attr", typ: r("ExampleCodeAttr") },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("FluffyXHTMLDiv")), r("XHTMLDiv11"), "")) },
-        { json: "xhtml:table", js: "xhtml:table", typ: u(undefined, r("XHTMLTableXHTMLTable")) },
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:p", js: "xhtml:p", typ: u(undefined, "") },
         { json: "xhtml:ul", js: "xhtml:ul", typ: u(undefined, r("XHTMLOlElement")) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, "") },
+        { json: "xhtml:table", js: "xhtml:table", typ: u(undefined, r("XHTMLTableXHTMLTable")) },
     ], false),
     "ExampleCodeAttr": o([
         { json: "@_Nature", js: "@_Nature", typ: r("PurpleNature") },
@@ -1789,10 +1789,10 @@ const typeMap: any = {
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
     "IndecentXHTMLDiv": o([
-        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
-        { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, "") },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(u(r("HilariousXHTMLDiv"), "")), r("AmbitiousXHTMLDiv"))) },
+        { json: "#text", js: "#text", typ: u(undefined, "") },
+        { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, "") },
     ], false),
     "CunningXHTMLDiv": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
@@ -1863,22 +1863,22 @@ const typeMap: any = {
     ], false),
     "XHTMLDiv11": o([
         { json: "#text", js: "#text", typ: "" },
-        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv12")), r("XHTMLDiv18"))) },
+        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
     "XHTMLDiv12": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
-        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv13")), r("XHTMLDiv17"))) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv13")), r("XHTMLDiv17"))) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, "") },
+        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
     "XHTMLDiv13": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
-        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, "") },
+        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("XHTMLDiv14")) },
     ], false),
     "XHTMLDiv14": o([
@@ -1902,16 +1902,16 @@ const typeMap: any = {
     "XHTMLDiv17": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("FluffyXHTMLDiv")), r("StickyXHTMLDiv"))) },
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("FluffyXHTMLDiv")), r("StickyXHTMLDiv"))) },
     ], false),
     "XHTMLDiv18": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv19")), r("XHTMLDiv20"))) },
+        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:b", js: "xhtml:b", typ: u(undefined, "") },
     ], false),
     "XHTMLDiv19": o([
@@ -1924,9 +1924,9 @@ const typeMap: any = {
     "XHTMLDiv20": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv21")), r("FluffyXHTMLDiv"))) },
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
+        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
     ], false),
     "XHTMLDiv21": o([
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
@@ -1937,9 +1937,9 @@ const typeMap: any = {
     ], false),
     "XHTMLDiv22": o([
         { json: "#text", js: "#text", typ: "" },
-        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("IndecentXHTMLDiv")), r("FluffyXHTMLDiv"))) },
+        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
     "XHTMLTableXHTMLTable": o([
@@ -1963,8 +1963,8 @@ const typeMap: any = {
     "XHTMLDiv23": o([
         { json: "#text", js: "#text", typ: "" },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv24")), r("XHTMLDiv27"))) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv24")), r("XHTMLDiv27"))) },
     ], false),
     "XHTMLDiv24": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
@@ -1977,20 +1977,20 @@ const typeMap: any = {
         { json: "#text", js: "#text", typ: "" },
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, a(r("FluffyXHTMLDiv"))) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, a("")) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, a(r("FluffyXHTMLDiv"))) },
     ], false),
     "XHTMLDiv26": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
-        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("IndecentXHTMLDiv")), r("IndecentXHTMLDiv"))) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
+        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
     "XHTMLDiv27": o([
+        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv28")), r("XHTMLDiv29"))) },
-        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, "") },
     ], false),
@@ -1998,15 +1998,15 @@ const typeMap: any = {
         { json: "#text", js: "#text", typ: "" },
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, a(r("FluffyXHTMLDiv"))) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, "") },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, a(r("FluffyXHTMLDiv"))) },
     ], false),
     "XHTMLDiv29": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
+        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("FluffyXHTMLDiv")), r("XHTMLDiv30"))) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
-        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
     "XHTMLDiv30": o([
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
@@ -2017,8 +2017,8 @@ const typeMap: any = {
     ], false),
     "XHTMLDiv31": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
-        { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, a("")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv32")), r("IndecentXHTMLDiv"))) },
+        { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, a("")) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
@@ -2049,18 +2049,18 @@ const typeMap: any = {
         { json: "@_Demonstrative_Example_ID", js: "@_Demonstrative_Example_ID", typ: "" },
     ], false),
     "PurpleDemonstrativeExample": o([
-        { json: "Intro_Text", js: "Intro_Text", typ: u(r("FluffyIntroText"), "") },
-        { json: "Body_Text", js: "Body_Text", typ: u(undefined, u(a(u(r("FluffyBodyText"), "")), r("BackgroundDetail"), "")) },
-        { json: "Example_Code", js: "Example_Code", typ: u(undefined, u(a(r("TentacledExampleCode")), r("StickyExampleCode"))) },
         { json: "attr", js: "attr", typ: u(undefined, r("DemonstrativeExampleAttr")) },
+        { json: "Intro_Text", js: "Intro_Text", typ: u(r("FluffyIntroText"), "") },
+        { json: "Example_Code", js: "Example_Code", typ: u(undefined, u(a(r("TentacledExampleCode")), r("StickyExampleCode"))) },
+        { json: "Body_Text", js: "Body_Text", typ: u(undefined, u(a(u(r("FluffyBodyText"), "")), r("BackgroundDetail"), "")) },
         { json: "References", js: "References", typ: u(undefined, r("DemonstrativeExampleReferences")) },
     ], false),
     "FluffyBodyText": o([
         { json: "xhtml:ul", js: "xhtml:ul", typ: u(undefined, r("BodyTextXHTMLUL")) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("XHTMLDiv34")) },
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:table", js: "xhtml:table", typ: u(undefined, r("BodyTextXHTMLTable")) },
         { json: "xhtml:p", js: "xhtml:p", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("XHTMLDiv34")) },
     ], false),
     "XHTMLDiv34": o([
         { json: "xhtml:div", js: "xhtml:div", typ: a("") },
@@ -2091,8 +2091,8 @@ const typeMap: any = {
         { json: "#text", js: "#text", typ: "" },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv36")), r("XHTMLDiv48"))) },
-        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
+        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
     ], false),
     "XHTMLDiv36": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
@@ -2110,8 +2110,8 @@ const typeMap: any = {
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv39")), r("XHTMLDiv44"))) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv39")), r("XHTMLDiv44"))) },
     ], false),
     "XHTMLDiv39": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
@@ -2166,9 +2166,9 @@ const typeMap: any = {
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, "") },
     ], false),
     "XHTMLDiv48": o([
-        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv36")), r("XHTMLDiv49"))) },
+        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:b", js: "xhtml:b", typ: u(undefined, "") },
@@ -2213,18 +2213,18 @@ const typeMap: any = {
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
     ], false),
     "XHTMLDiv51": o([
-        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("XHTMLDiv12")), r("XHTMLDiv52"))) },
+        { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
     ], false),
     "XHTMLDiv52": o([
         { json: "#text", js: "#text", typ: u(undefined, "") },
-        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, u(a(""), "")) },
-        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
         { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, u(a(r("IndecentXHTMLDiv")), r("StickyXHTMLDiv"))) },
+        { json: "attr", js: "attr", typ: u(undefined, r("XHTMLDivAttr")) },
+        { json: "xhtml:i", js: "xhtml:i", typ: u(undefined, u(a(""), "")) },
     ], false),
     "FluffyXHTMLTable": o([
         { json: "xhtml:tbody", js: "xhtml:tbody", typ: r("XHTMLTbody") },
@@ -2251,8 +2251,8 @@ const typeMap: any = {
     "DetectionMethodElement": o([
         { json: "Method", js: "Method", typ: r("Method") },
         { json: "Description", js: "Description", typ: u(r("PurpleDescription"), "") },
-        { json: "Effectiveness", js: "Effectiveness", typ: u(undefined, r("DetectionMethodEffectiveness")) },
         { json: "attr", js: "attr", typ: u(undefined, r("DetectionMethodAttr")) },
+        { json: "Effectiveness", js: "Effectiveness", typ: u(undefined, r("DetectionMethodEffectiveness")) },
         { json: "Effectiveness_Notes", js: "Effectiveness_Notes", typ: u(undefined, "") },
     ], false),
     "PurpleDescription": o([
@@ -2275,8 +2275,8 @@ const typeMap: any = {
         { json: "Method", js: "Method", typ: r("Method") },
         { json: "Description", js: "Description", typ: u(r("FluffyDescription"), "") },
         { json: "Effectiveness", js: "Effectiveness", typ: u(undefined, r("DetectionMethodEffectiveness")) },
-        { json: "Effectiveness_Notes", js: "Effectiveness_Notes", typ: u(undefined, "") },
         { json: "attr", js: "attr", typ: u(undefined, r("DetectionMethodAttr")) },
+        { json: "Effectiveness_Notes", js: "Effectiveness_Notes", typ: u(undefined, "") },
     ], false),
     "FluffyDescription": o([
         { json: "xhtml:p", js: "xhtml:p", typ: u(a(""), "") },
@@ -2294,10 +2294,10 @@ const typeMap: any = {
     "ExtendedDescriptionClass": o([
         { json: "xhtml:p", js: "xhtml:p", typ: u(a(""), "") },
         { json: "xhtml:ul", js: "xhtml:ul", typ: u(undefined, u(a(r("FluffyXHTMLUL")), r("TentacledXHTMLUL"))) },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("ExtendedDescriptionXHTMLDiv")) },
         { json: "xhtml:ol", js: "xhtml:ol", typ: u(undefined, r("XHTMLOlElement")) },
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:br", js: "xhtml:br", typ: u(undefined, a("")) },
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("ExtendedDescriptionXHTMLDiv")) },
     ], false),
     "ExtendedDescriptionXHTMLDiv": o([
         { json: "attr", js: "attr", typ: r("XHTMLDivAttr") },
@@ -2314,9 +2314,9 @@ const typeMap: any = {
         { json: "xhtml:li", js: "xhtml:li", typ: a(u(r("PurpleXHTMLLi"), "")) },
     ], false),
     "PurpleXHTMLLi": o([
-        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("XHTMLLiClass")) },
         { json: "#text", js: "#text", typ: u(undefined, "") },
         { json: "xhtml:b", js: "xhtml:b", typ: u(undefined, "") },
+        { json: "xhtml:div", js: "xhtml:div", typ: u(undefined, r("XHTMLLiClass")) },
     ], false),
     "FunctionalAreas": o([
         { json: "Functional_Area", js: "Functional_Area", typ: u(a(""), "") },
@@ -2353,10 +2353,10 @@ const typeMap: any = {
     "MitigationElement": o([
         { json: "Phase", js: "Phase", typ: u(undefined, u(a(r("PhaseElement")), r("PhaseElement"))) },
         { json: "Description", js: "Description", typ: u(r("TentacledDescription"), "") },
-        { json: "Strategy", js: "Strategy", typ: u(undefined, r("Strategy")) },
         { json: "attr", js: "attr", typ: u(undefined, r("MitigationAttr")) },
-        { json: "Effectiveness_Notes", js: "Effectiveness_Notes", typ: u(undefined, "") },
+        { json: "Strategy", js: "Strategy", typ: u(undefined, r("Strategy")) },
         { json: "Effectiveness", js: "Effectiveness", typ: u(undefined, r("PurpleEffectiveness")) },
+        { json: "Effectiveness_Notes", js: "Effectiveness_Notes", typ: u(undefined, "") },
     ], false),
     "TentacledDescription": o([
         { json: "xhtml:p", js: "xhtml:p", typ: u(a(""), "") },
@@ -2376,10 +2376,10 @@ const typeMap: any = {
     "PurpleMitigation": o([
         { json: "Phase", js: "Phase", typ: u(undefined, u(a(r("PhaseElement")), r("PhaseElement"))) },
         { json: "Description", js: "Description", typ: u(r("BackgroundDetail"), "") },
+        { json: "attr", js: "attr", typ: u(undefined, r("MitigationAttr")) },
+        { json: "Strategy", js: "Strategy", typ: u(undefined, r("Strategy")) },
         { json: "Effectiveness", js: "Effectiveness", typ: u(undefined, r("DetectionMethodEffectiveness")) },
         { json: "Effectiveness_Notes", js: "Effectiveness_Notes", typ: u(undefined, "") },
-        { json: "Strategy", js: "Strategy", typ: u(undefined, r("Strategy")) },
-        { json: "attr", js: "attr", typ: u(undefined, r("MitigationAttr")) },
     ], false),
     "CweDictionaryReferences": o([
         { json: "Reference", js: "Reference", typ: u(a(r("ReferenceElement")), r("ReferenceElement")) },

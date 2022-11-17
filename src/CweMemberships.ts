@@ -7,20 +7,15 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface CweMemberships {
-    weaknessId:  string;
-    memberships: string[];
-}
-
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toCweMemberships(json: string): CweMemberships[] {
-        return cast(JSON.parse(json), a(r("CweMemberships")));
+    public static toCweMemberships(json: string): { [key: string]: string[] } {
+        return cast(JSON.parse(json), m(a("")));
     }
 
-    public static cweMembershipsToJson(value: CweMemberships[]): string {
-        return JSON.stringify(uncast(value, a(r("CweMemberships"))), null, 2);
+    public static cweMembershipsToJson(value: { [key: string]: string[] }): string {
+        return JSON.stringify(uncast(value, m(a(""))), null, 2);
     }
 }
 
@@ -157,8 +152,4 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "CweMemberships": o([
-        { json: "weaknessId", js: "weaknessId", typ: "" },
-        { json: "memberships", js: "memberships", typ: a("") },
-    ], false),
 };

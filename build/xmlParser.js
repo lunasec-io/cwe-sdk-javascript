@@ -22,9 +22,9 @@ function createCweDictionary({ cweArchive }) {
         membershipMap.set(memberId, current)
       })
     })
-  const cweDictionary = []
-  const cweHierarchy = []
-  const cweMemberships = []
+  const cweDictionary = {}
+  const cweHierarchy = {}
+  const cweMemberships = {}
 
   allWeaknesses.forEach(function(weakness) {
     // rename these so that we can generate the types for them
@@ -38,6 +38,7 @@ function createCweDictionary({ cweArchive }) {
     delete attr['@_Name']
     delete attr['@_CWE_ID']
     delete attr['@_Nature']
+    delete attr['@_Date']
 
     weakness['attr'] = attr
 
@@ -46,7 +47,7 @@ function createCweDictionary({ cweArchive }) {
       return
     }
 
-    cweDictionary.push(weakness)
+    cweDictionary[weaknessId] = weakness
 
     if (weakness['Related_Weaknesses'] && weakness['Related_Weaknesses']['Related_Weakness']) {
       const relatedWeaknesses = weakness['Related_Weaknesses']['Related_Weakness']
@@ -54,29 +55,26 @@ function createCweDictionary({ cweArchive }) {
       if (Array.isArray(relatedWeaknesses)) {
         relatedWeaknesses.forEach(function(relation) {
           if (relation['attr']['@_Nature'] === 'ChildOf') {
-            const parentId = relation['attr']['@_CWE_ID']
-            cweHierarchy.push({
-              weaknessId,
-              parentId
-            })
+            const parents = cweHierarchy[weaknessId]
+            if (!parents) {
+              cweHierarchy[weaknessId] = []
+            }
+            cweHierarchy[weaknessId].push(relation['attr']['@_CWE_ID'])
           }
         })
       } else {
         if (relatedWeaknesses['attr']['@_Nature'] === 'ChildOf') {
-          const parentId = relatedWeaknesses['attr']['@_CWE_ID']
-          cweHierarchy.push({
-            weaknessId,
-            parentId
-          })
+          const parents = cweHierarchy[weaknessId]
+          if (!parents) {
+            cweHierarchy[weaknessId] = []
+          }
+          cweHierarchy[weaknessId].push(relatedWeaknesses['attr']['@_CWE_ID'])
         }
       }
 
       const weaknessMembership = membershipMap.get(weaknessId)
       if (weaknessMembership) {
-        cweMemberships.push({
-          weaknessId,
-          memberships: weaknessMembership
-        })
+        cweMemberships[weaknessId] = weaknessMembership
       }
     }
   })
