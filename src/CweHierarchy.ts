@@ -7,20 +7,15 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface CweHierarchy {
-    weaknessId: string;
-    parentId:   string;
-}
-
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toCweHierarchy(json: string): CweHierarchy[] {
-        return cast(JSON.parse(json), a(r("CweHierarchy")));
+    public static toCweHierarchy(json: string): { [key: string]: string[] } {
+        return cast(JSON.parse(json), m(a("")));
     }
 
-    public static cweHierarchyToJson(value: CweHierarchy[]): string {
-        return JSON.stringify(uncast(value, a(r("CweHierarchy"))), null, 2);
+    public static cweHierarchyToJson(value: { [key: string]: string[] }): string {
+        return JSON.stringify(uncast(value, m(a(""))), null, 2);
     }
 }
 
@@ -157,8 +152,4 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "CweHierarchy": o([
-        { json: "weaknessId", js: "weaknessId", typ: "" },
-        { json: "parentId", js: "parentId", typ: "" },
-    ], false),
 };

@@ -4,7 +4,7 @@ describe('Cwe Manager', () => {
   describe('Cwe Manager supports instantiation with custom data', () => {
     test('Cwe Manager instnatiated with custom hierarchy', () => {
       const cweManager = new CweManager({
-        cweHierarchy: [{ weaknessId: '31337', parentId: '31338' }]
+        cweHierarchy: { '31337': ['31338'] }
       })
       const result = cweManager.isChildOf('31337', '31338')
       expect(result).toBe(true)
@@ -55,7 +55,7 @@ describe('Cwe Manager', () => {
     test('A CWE ID that has no memberships should return null', () => {
       const cweManager = new CweManager()
       const result = cweManager.getMemberships('notfoundid')
-      expect(result).toBe(null)
+      expect(result).toBe(undefined)
     })
 
     test('A CWE ID with memberships should return an array of ids', () => {
