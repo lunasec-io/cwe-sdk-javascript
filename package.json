@@ -2,7 +2,7 @@
   "name": "cwe-sdk",
   "version": "0.0.0-development",
   "description": "A Common Weakness Enumeration (CWE) Node.js SDK compliant with MITRE / CAPEC",
-  "main": "index.js",
+  "main": "dist/src/CweManager.js",
   "engines": {
     "node": ">=12.0.0"
   },
